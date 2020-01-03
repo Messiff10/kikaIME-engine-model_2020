@@ -31,12 +31,12 @@
 
     - 参数解释  
 `${locale} 语言编码 `  
-`${unigram_path} 一元大词表路径 `
-`${emojis_path} emoji词表路径 `  
-`${pro_data_path} 生成的字母|#|单词文件路径 `
-`${wordcount_true_path} 训练所用原始语料的词频与一元大词表相比为true的文件路径 `
-`${letters_path} 字母表路径 `
-`${output_dir} 生成的训练数据目录，最后不包含/ ` 
+`${unigram_path} 一元大词表路径 `  
+`${emojis_path} emoji词表路径 `   
+`${pro_data_path} 生成的字母|#|单词文件路径 `  
+`${wordcount_true_path} 训练所用原始语料的词频与一元大词表相比为true的文件路径 `  
+`${letters_path} 字母表路径 `  
+`${output_dir} 生成的训练数据目录，最后不包含/ `  
 `${lineNum} 用来生成训练数据原始语料的行数 `  
 `${wordsNum} 用于训练的词表大小，一般为20000 `  
 `${rateThreshold} 筛数据时的阈值，一般为0.8 `  
