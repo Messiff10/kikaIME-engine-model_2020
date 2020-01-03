@@ -27,20 +27,22 @@
 - 训练数据生成  
 数据生成的代码在data_producer/src/main/java下
     - 执行  
-      `nohup java TrainingDataProducerEmojiOutTwoUnk convertDataWordsLetters \
-      ${words_dict_file} ${emojis_file} ${words_num} ${data_path_in} ${data_path_out} \
-      ${rate_threshold} ${train_num} ${dev_num} ${test_num} > out.log &`  
+      `nohup java TrainingDataProducerEmojiOutTwoUnk_file en_US unigram_path emojis_path pro_data_path wordcount_true_path letters_path output_dir lineNum wordsNum rateThreshold trainDataNum devDataNum testDataNum`  
 
     - 参数解释  
-`${words_dict_file} 16万大词表文件 `  
-`${emojis_file} emoji词表 `  
-`${words_num} 用于训练的词表大小，一般为20000 `  
-`${data_path_in} 原始训练数据目录 `  
-`${data_path_out} 生成的训练数据目录 `  
-`${rate_threshold} 筛数据时的阈值，一般为0.8 `  
-`${train_num} 用于train的完整句子数，一般取300万到500万为宜 `  
-`${dev_num} 用于dev的完整句子数，一般为1万 `  
-`${test_num} 用于test的完整句子数，一般为1万 `  
+`${locale} 语言编码 `  
+`${unigram_path} 一元大词表路径 `
+`${emojis_path} emoji词表路径 `  
+`${pro_data_path} 生成的字母|#|单词文件路径 `
+`${wordcount_true_path} 训练所用原始语料的词频与一元大词表相比为true的文件路径 `
+`${letters_path} 字母表路径 `
+`${output_dir} 生成的训练数据目录，最后不包含/ ` 
+`${lineNum} 用来生成训练数据原始语料的行数 `  
+`${wordsNum} 用于训练的词表大小，一般为20000 `  
+`${rateThreshold} 筛数据时的阈值，一般为0.8 `  
+`${trainDataNum} 用于train的完整句子数 `  
+`${devDataNum} 用于dev的完整句子数，一般为1万 `  
+`${testDataNum} 用于test的完整句子数，一般为1万 `  
 
 最后在指定的${data_path_out}目录下即为生成的训练数据和词表  
 
