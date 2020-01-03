@@ -189,15 +189,15 @@ public class TrainingDataProducerEmojiOutTwoUnk_file
 	private static SumMap<String> wordsCountMapFromData = null;
 	
 	private static SumMap<String> phraseCountMapFromData = null;
-	
-	private static int lineNum =  20913156; //
-	private static int wordsNum = 20000;
+//
+//	private static ; //
+//	private static int wordsNum = 20000;
 	
 	public static void main(String[] arg0) {
 
 //        String wordsDictFile = "/home/pubsrv/data/lizhen/split_model/dl-tensorflow-dev/seq2word_word_letter_separated/data_producer/src/main/resources/words_dict/main_en_1_unigram_emoji";
 //        String emojisFile = "/home/pubsrv/data/lizhen/split_model/dl-tensorflow-dev/seq2word_word_letter_separated/data_producer/src/main/resources/words_dict/emojis";
-		String s=arg0[0];
+		String s="de";
 		String wordsDictFile = "/Users/ff/Desktop/train_data/"+s+"/"+s+"_unigram";
 		String emojisFile = "/Users/ff/Desktop/train_data/emojis_null";
 //		String dataPathIn_original = "/Users/ff/Desktop/train_data/ar/ar_im_fa_web.txt";
@@ -211,7 +211,8 @@ public class TrainingDataProducerEmojiOutTwoUnk_file
 		//String dataPathIn = "/home/pubsrv/data/gaoxin/data/20161223_20170803_emojis_cleaned/";
 		
 		String dataPathOut = "/Users/ff/Desktop/train_data/"+s+"/"+s+"_user_web_train/train_data_"+s+"_web_nomap_user_mapletters_400w";
-		
+		int lineNum =  20913156;
+		int wordsNum = 20000;
 		double rateThreshold = 0.8;
 		int trainDataNum = 9913156;
 		int devDataNum = 10000;
@@ -220,8 +221,8 @@ public class TrainingDataProducerEmojiOutTwoUnk_file
 		loadEmojisSet(emojisFile);
 		//		calculateWordsFrequencyAllData(dataPathIn_original);  //
 		combineWordsDict(wordsDictFile,wordvocabfile,lettervocabfile);
-		convertData(dataPathIn, rateThreshold, trainDataNum, devDataNum, testDataNum, dataPathOut);
-		saveVocabFiles(dataPathOut);
+		convertData(dataPathIn, rateThreshold,lineNum, trainDataNum, devDataNum, testDataNum, dataPathOut);
+		saveVocabFiles(dataPathOut,wordsNum);
 		convertToIds(dataPathOut, dataPathOut);
 	}
 	
@@ -651,7 +652,7 @@ public class TrainingDataProducerEmojiOutTwoUnk_file
 		}
 	}
 	
-	private static void convertData(String dataPathIn, double rateThreshold, int trainDataNum,
+	private static void convertData(String dataPathIn, double rateThreshold, int lineNum,int trainDataNum,
 									int devDataNum, int testDataNum, String dataPathOut) {
 		
 		try {
@@ -851,7 +852,7 @@ public class TrainingDataProducerEmojiOutTwoUnk_file
 		}
 	}
 	
-	private static void makeVocabMap() {
+	private static void makeVocabMap(int wordsNum) {
 		wordIdMap = new LinkedHashMap<>();
 		letterIdMap = new LinkedHashMap<>();
 		outWordIdMap = new LinkedHashMap<>();
@@ -924,8 +925,8 @@ public class TrainingDataProducerEmojiOutTwoUnk_file
 		}
 	}
 	
-	private static void saveVocabFiles(String dataPathOut) {
-		makeVocabMap();
+	private static void saveVocabFiles(String dataPathOut,int wordsNum) {
+		makeVocabMap(wordsNum);
 		System.out.println("wordidmap size:"+wordIdMap.size());
 		System.out.println("wordidmap size:"+letterIdMap.size());
 		System.out.println("wordidmap size:"+outWordIdMap.size());
