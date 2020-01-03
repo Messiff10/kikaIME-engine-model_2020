@@ -44,7 +44,25 @@
 `${devDataNum} 用于dev的完整句子数，一般为1万 `  
 `${testDataNum} 用于test的完整句子数，一般为1万 `  
 
-最后在指定的${data_path_out}目录下即为生成的训练数据和词表  
+- 开发集训练数据生成  
+数据生成的代码在data_producer/src/main/java下
+     - 执行  
+      `nohup java TrainingDataProducerEmojiOutTwoUnk_single_develop en_US unigram_path emojis_path test_data_dev_path wordcount_true_path letters_path output_dir train_data_vocab_in_letters_path train_data_vocab_in_words_path train_data_vocab_out_path dirNum`  
+
+    - 参数解释  
+`${locale} 语言编码 `  
+`${unigram_path} 一元大词表路径 `  
+`${emojis_path} emoji词表路径 `   
+`${pro_data_path} 生成的测评数据字母|#|单词文件路径 `  
+`${wordcount_true_path} 训练所用原始语料的词频与一元大词表相比为true的文件路径 `  
+`${letters_path} 字母表路径 `  
+`${output_dir} 生成的训练数据目录，最后不包含/ `  
+`${train_data_vocab_in_letters_path} 训练数据字母表文件路径 `  
+`${train_data_vocab_in_words_path} 训练数据2w单词文件路径 `  
+`${train_data_vocab_out_path} 训练数据2wout单词文件路径 `  
+`${dirNum} 输出路径文件命名编号 `  
+
+
 
 - 训练  
 训练的代码在seq2word_split_model下
